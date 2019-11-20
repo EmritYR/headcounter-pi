@@ -13,9 +13,9 @@ create table student
 
 create table course
 (
-    course_id   integer primary key,
-    name        varchar(64)  not null,
-    description varchar(255) not null,
+    course_id   varchar(16) primary key,
+    name        varchar(64) not null,
+    description varchar(255),
     img_url     varchar(255)
 );
 
@@ -29,7 +29,7 @@ create table lecturer
 create table registration_list
 (
     id         serial primary key,
-    course_id  integer references course (course_id),
+    course_id  varchar(16) references course (course_id),
     student_id integer references student (student_id)
 );
 
@@ -48,7 +48,7 @@ create table attendance_log
 (
     id             serial primary key,
     student_id     integer references student (student_id),
-    course_id      integer references course (course_id),
+    course_id      varchar(16) references course (course_id),
     lecturer_id    integer references lecturer (lecturer_id),
     timestamp_date timestamp
 );
@@ -74,3 +74,6 @@ from lecturer;
 
 select *
 from attendance_log;
+
+alter table course
+    alter column description drop not null;
