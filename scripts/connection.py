@@ -2,13 +2,10 @@ import psycopg2
 from psycopg2 import sql
 
 
-def databaseConnect():
+def databaseConnect(user, password, host, port, database):
     try:
-        connection = psycopg2.connect(user="qqolorykjuhkzg",
-                                      password="aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15",
-                                      host="ec2-54-221-195-148.compute-1.amazonaws.com",
-                                      port="5432",
-                                      database="d3bfq4clh09b21")
+        connection = psycopg2.connect(user=user, password=password,
+                                      host=host, port=port, database=database)
 
         cursor = connection.cursor()
         cursor.execute("SELECT version();")
@@ -84,11 +81,11 @@ def insertClass(connection, cursor, type, lecturer_id, location, start_time, end
         print(error)
 
 
-def insertAttendanceLog(connection, cursor, student_id, course_id, lecturer_id, timestamp_date, ):
+def insertAttendanceLog(connection, cursor, student_id, course_id, lecturer_id, timestamp_date):
     try:
-        postgres_insert_query = """INSERT INTO attendance_log (student_id, course_id, lecturer_id, timestamp_date, 
-        ) VALUES (%s,%s,%s,%s) """
-        record_to_insert = (student_id, course_id, lecturer_id, timestamp_date,)
+        postgres_insert_query = """INSERT INTO attendance_log (student_id, course_id, lecturer_id, timestamp_date) 
+        VALUES (%s,%s,%s,%s) """
+        record_to_insert = (student_id, course_id, lecturer_id, timestamp_date)
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
