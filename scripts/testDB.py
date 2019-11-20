@@ -1,10 +1,11 @@
+from psycopg2 import sql
 from connection import *
 
 connection, cursor = databaseConnect()
 
 try:
     # insertStudent(connection, cursor, 816010709, "Bhavesh Digamber")
-    students = getStudentList(connection, cursor)
+    students = getTableList(connection, cursor, 'student')
     print(students)
 except KeyboardInterrupt or Exception:
     pass

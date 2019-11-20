@@ -1,4 +1,5 @@
 import psycopg2
+from psycopg2 import sql
 
 
 def databaseConnect():
@@ -34,10 +35,8 @@ def insertStudent(connection, cursor, student_id, name):
     connection.commit()
 
 
-def getStudentList(connection, cursor):
-    postgres_get_query = """ select * from student """
-    cursor.execute(postgres_get_query)
+def getTableList(connection, cursor, tableName):
+    cursor.execute(sql.SQL("select * from {}").format(sql.Identifier(tableName)), [10, 20])
     student_record = cursor.fetchall()
     connection.commit()
-
     return student_record
