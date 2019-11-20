@@ -38,18 +38,18 @@ create table class
 (
     id          serial primary key,
     type        varchar(16),
+    course_id   varchar(16) references course (course_id),
     lecturer_id integer references lecturer (lecturer_id),
     location    varchar(32),
     start_time  timestamp,
-    end_time    timestamp
+    duration    time
 );
 
 create table attendance_log
 (
     id             serial primary key,
     student_id     integer references student (student_id),
-    course_id      varchar(16) references course (course_id),
-    lecturer_id    integer references lecturer (lecturer_id),
+    class_id       integer references class (id),
     timestamp_date timestamp
 );
 

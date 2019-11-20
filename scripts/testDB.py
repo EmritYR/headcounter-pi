@@ -1,3 +1,5 @@
+import datetime
+
 from psycopg2 import sql
 from connection import *
 
@@ -18,6 +20,20 @@ try:
     # insertRegistrationList(connection, cursor, 'COMP3613', 815117456)
     registrationList = getTableList(connection, cursor, 'registration_list')
     print(registrationList)
+
+    # insertLecturer(connection, cursor, 815117456, 'Emrit Ramharracksigh', None)
+    lecturerList = getTableList(connection, cursor, 'lecturer')
+    print(lecturerList)
+
+    # Runs on startScanning
+    # Stores class_id in var reuses for attendance log
+    # insertClass(connection, cursor, 'Lecture', 'COMP3613', '815117456', 'FST CSL1', datetime.datetime.now(), '02:00')
+    classList = getTableList(connection, cursor, 'class')
+    print(classList)
+
+    insertAttendanceLog(connection, cursor, 815117456, '1', datetime.datetime.now())
+    attendanceList = getTableList(connection, cursor, 'attendance_log')
+    print(attendanceList)
 
 except KeyboardInterrupt or Exception:
     pass

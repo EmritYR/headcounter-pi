@@ -36,7 +36,7 @@ def insertStudent(connection, cursor, student_id, name):
         print(error)
 
 
-def insertCourse(connection, cursor, course_id, name, description, img_url):
+def insertCourse(connection, cursor, course_id, name, description, img_url=None):
     try:
         postgres_insert_query = """ INSERT INTO course (course_id, name, description, img_url) VALUES (%s,%s, %s,%s)"""
         record_to_insert = (course_id, name, description, img_url)
@@ -47,7 +47,7 @@ def insertCourse(connection, cursor, course_id, name, description, img_url):
         print(error)
 
 
-def insertLecturer(connection, cursor, lecturer_id, name, img_url):
+def insertLecturer(connection, cursor, lecturer_id, name, img_url=None):
     try:
         postgres_insert_query = """ INSERT INTO lecturer (lecturer_id, name, img_url) VALUES (%s,%s,%s)"""
         record_to_insert = (lecturer_id, name, img_url)
@@ -69,11 +69,11 @@ def insertRegistrationList(connection, cursor, course_id, student_id):
         print(error)
 
 
-def insertClass(connection, cursor, type, lecturer_id, location, start_time, end_time):
+def insertClass(connection, cursor, type, course_id, lecturer_id, location, start_time, duration):
     try:
-        postgres_insert_query = """INSERT INTO class (type, lecturer_id, location, start_time, end_time) VALUES (%s,%s,
-        %s,%s,%s) """
-        record_to_insert = (type, lecturer_id, location, start_time, end_time)
+        postgres_insert_query = """INSERT INTO class (type,course_id, lecturer_id, location, start_time, duration) VALUES (%s,%s,
+        %s,%s,%s,%s) """
+        record_to_insert = (type, course_id, lecturer_id, location, start_time, duration)
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
@@ -81,11 +81,11 @@ def insertClass(connection, cursor, type, lecturer_id, location, start_time, end
         print(error)
 
 
-def insertAttendanceLog(connection, cursor, student_id, course_id, lecturer_id, timestamp_date):
+def insertAttendanceLog(connection, cursor, student_id, class_id, timestamp_date):
     try:
-        postgres_insert_query = """INSERT INTO attendance_log (student_id, course_id, lecturer_id, timestamp_date) 
-        VALUES (%s,%s,%s,%s) """
-        record_to_insert = (student_id, course_id, lecturer_id, timestamp_date)
+        postgres_insert_query = """INSERT INTO attendance_log (student_id, class_id, timestamp_date) 
+        VALUES (%s,%s,%s) """
+        record_to_insert = (student_id, class_id, timestamp_date)
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
