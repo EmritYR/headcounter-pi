@@ -21,9 +21,10 @@ create table course
 
 create table lecturer
 (
-    lecturer_id integer primary key,
-    name        varchar(64) not null,
-    img_url     varchar(255)
+    lecturer_id   integer primary key,
+    name          varchar(64) not null,
+    img_url       varchar(255),
+    password_hash varchar(255)
 );
 
 create table registration_list
