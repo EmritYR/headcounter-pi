@@ -35,6 +35,7 @@ def insertStudent(connection, cursor, student_id, name):
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
+        cursor.execute('ROLLBACK')
         print(error)
 
 
@@ -45,6 +46,7 @@ def insertCourse(connection, cursor, course_id, name, description, img_url):
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
+        cursor.execute('ROLLBACK')
         print(error)
 
 
@@ -55,6 +57,7 @@ def insertLecturer(connection, cursor, lecturer_id, name, img_url):
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
+        cursor.execute('ROLLBACK')
         print(error)
 
 
@@ -65,6 +68,7 @@ def insertRegistrationList(connection, cursor, course_id, student_id):
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
+        cursor.execute('ROLLBACK')
         print(error)
 
 
@@ -76,6 +80,7 @@ def insertClass(connection, cursor, type, lecturer_id, location, start_time, end
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
+        cursor.execute('ROLLBACK')
         print(error)
 
 
@@ -87,6 +92,7 @@ def insertAttendanceLog(connection, cursor, student_id, course_id, lecturer_id, 
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except psycopg2.DatabaseError as error:
+        cursor.execute('ROLLBACK')
         print(error)
 
 

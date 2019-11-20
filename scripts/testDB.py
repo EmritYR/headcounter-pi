@@ -9,7 +9,7 @@ try:
     students = getTableList(connection, cursor, 'student')
     print(students)
 
-    insertCourse(connection, cursor, 'COMP3613', 'Software Eng 2', None, None)
+    # insertCourse(connection, cursor, 'COMP3613', 'Software Eng 2', None, None)
     courses = getTableList(connection, cursor, 'course')
     print(courses)
 
