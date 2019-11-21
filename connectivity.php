@@ -40,6 +40,12 @@ function logout() {
     session_destroy();
     header("Location: index.php");
 }
+
+function create_account(){
+    session_start();
+
+}
+
 function main() {
     date_default_timezone_set ( 'America/Port_of_Spain');
 
@@ -48,6 +54,9 @@ function main() {
     }
     if (isset($_POST['logout'])) {
         logout();
+    }
+    if (isset($_POST['create_account'])){
+        create_account();
     }
 }
 

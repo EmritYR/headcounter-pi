@@ -10,15 +10,15 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/register.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 <div class="register-photo">
     <div class="form-container">
         <div class="image-holder"></div>
-        <form method="post" action="register.php" id="register_form">
+        <form method="post" action="connectivity.php" id="register_form">
             <h2 class="text-center"><strong>Create</strong> an account.</h2>
             <div class="form-group">
                 <input id="first_name" class="form-control" type="text" name="first_name" placeholder="First Name"
