@@ -78,3 +78,5 @@ from attendance_log;
 
 alter table course
     alter column description drop not null;
+
+insert into lecturer(lecturer_id, name, password_hash) values (80085, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
