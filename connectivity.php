@@ -1,4 +1,15 @@
 <?php
+function getPDO()
+{
+    try {
+        $myPDO = new PDO('pgsql:host=ec2-54-221-195-148.compute-1.amazonaws.com; port=5432; dbname=d3bfq4clh09b21 sslmode=require', 'qqolorykjuhkzg', 'aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15');
+        return $myPDO;
+    } catch (PDOException $e) {
+        echo "Failed: " . $e->getMessage();
+        return null;
+    }
+}
+
 function login()
 {
     session_start();
@@ -7,7 +18,7 @@ function login()
     $password = hash('sha256', $_POST['password']);
 
     try {
-        $myPDO = new PDO('pgsql:host=ec2-54-221-195-148.compute-1.amazonaws.com; port=5432; dbname=d3bfq4clh09b21 sslmode=require', 'qqolorykjuhkzg', 'aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15');
+        $myPDO = getPDO();
         $result = $myPDO->query("SELECT * FROM lecturer");
 
         while ($row = $result->fetch(\PDO::FETCH_ASSOC)) {
@@ -53,7 +64,7 @@ function create_account()
         $img_url = $_POST['img_url'];
         $password_hash = hash('sha256', $_POST['password']);
 
-        $myPDO = new PDO('pgsql:host=ec2-54-221-195-148.compute-1.amazonaws.com; port=5432; dbname=d3bfq4clh09b21 sslmode=require', 'qqolorykjuhkzg', 'aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15');
+        $myPDO = getPDO();
         $sql = 'INSERT INTO lecturer(lecturer_id, name, img_url, password_hash) VALUES(:lecturer_id, :name, :img_url, :password_hash)';
         $stmt = $myPDO->prepare($sql);
 
