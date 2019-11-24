@@ -1,0 +1,1 @@
+git pull https://StallionsProject:qwerty.12stallions@github.com/EmritYR/headcounter-pi
