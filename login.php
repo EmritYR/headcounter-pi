@@ -12,6 +12,18 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+
+        input[type=number] {
+            -moz-appearance:textfield; /* Firefox */
+        }
+    </style>
 </head>
 
 <body>
@@ -31,8 +43,6 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">About Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Contact Us</a></li>
                 </ul>
-                <div class="mr-auto"></div>
-                <a class="btn btn-light action-button" role="button" href="login.php">Login</a></div>
         </div>
     </nav>
     <form method="post" action="connectivity.php">
@@ -41,7 +51,7 @@
             <i class="icon ion-ios-locked-outline"></i>
         </div>
         <div class="form-group">
-            <input class="form-control" type="number" name="id" placeholder="ID">
+            <input class="form-control" type="number" name="id" placeholder="ID" >
         </div>
         <div class="form-group">
             <input class="form-control" type="password" name="password" placeholder="Password">
@@ -49,7 +59,10 @@
         <div class="form-group">
             <input class="btn btn-primary btn-block" type="submit" name="login" value="Login"/>
         </div>
-        <a href="#" class="forgot">Forgot your email or password?</a></form>
+        <a href="#" class="forgot">Forgot your email or password?</a>
+        <hr>
+        <p class="forgot">Contact the system administrator for your login credentials  </p>
+    </form>
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>

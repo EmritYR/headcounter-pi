@@ -57,8 +57,8 @@ session_start();
             <div class="col-sm-6 col-md-4 item"></div>
             <div class="col-sm-6 col-md-4 item">
                 <h3 class="name">Get Started</h3>
-                <a href="#"><img class="img-fluid" src="assets/img/building.png"></a>
-                <p class="description">HeadCounter Attendence Tracking made Simple, Fast and Reliable.</p>
+                <a href="create_class.php"><img class="img-fluid" src="assets/img/building.png"></a>
+                <p class="description">HeadCounter Attendance Tracking made Simple, Fast and Reliable.</p>
                 <a href="#" class="action">
                     <iclass
                     ="fa fa-arrow-circle-right"></i></a></div>
