@@ -38,7 +38,10 @@ if (empty($_SESSION['username'])) {
             <textarea class="form-control" type="text" name="description" placeholder="Course Description...">
         </div>
         <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="Create Course"/>
+            <input class="form-control" type="text" name="img_url" placeholder="Img URL (Optional)">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" name="create_course" value="Create Course"/>
         </div>
     </form>
 </div>

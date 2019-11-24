@@ -82,6 +82,21 @@ function create_account()
     }
 }
 
+function create_course()
+{
+
+}
+
+function create_class()
+{
+
+}
+
+function assign_lecturers()
+{
+
+}
+
 function main()
 {
     date_default_timezone_set('America/Port_of_Spain');
@@ -94,6 +109,15 @@ function main()
     }
     if (isset($_POST['create_account'])) {
         create_account();
+    }
+    if (isset($_POST['create_course'])) {
+        create_course();
+    }
+    if (isset($_POST['create_class'])) {
+        create_class();
+    }
+    if (isset($_POST['assign_lecturers'])) {
+        assign_lecturers();
     }
 }
 
