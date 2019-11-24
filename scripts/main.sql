@@ -56,8 +56,8 @@ create table attendance_log
 
 create table course_lecturers
 (
-    id serial primary key,
-    course_id varchar(16) references course(course_id),
+    id          serial primary key,
+    course_id   varchar(16) references course (course_id),
     lecturer_id integer references lecturer (lecturer_id)
 );
 
