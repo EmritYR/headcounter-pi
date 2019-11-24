@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Article-List.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -20,6 +21,20 @@
         header("Location: account.php");
     }
     ?>
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+        <div class="container"><a class="navbar-brand" href="index.php">HeadCounter</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Contact Us</a></li>
+                </ul>
+                <div class="mr-auto"></div>
+                <a class="btn btn-light action-button" role="button" href="login.php">Login</a></div>
+        </div>
+    </nav>
     <form method="post" action="connectivity.php">
         <h2 class="sr-only">Login Form</h2>
         <div class="illustration">
