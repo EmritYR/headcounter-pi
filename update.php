@@ -1,5 +1,6 @@
 <?php
 session_start();
+// Testing remote update feature
 
 if($_SESSION['user'] != 'admin')
     header('Location: index.php');
