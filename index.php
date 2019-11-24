@@ -17,6 +17,18 @@ session_start();
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .zoom {
+            transition: transform .2s; /* Animation */
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .zoom:hover {
+            transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
 </head>
 
 <body>
@@ -55,9 +67,9 @@ session_start();
         </div>
         <div class="row articles">
             <div class="col-sm-6 col-md-4 item"></div>
-            <div class="col-sm-6 col-md-4 item">
+            <div class="col-sm-6 col-md-4 item zoom">
                 <h3 class="name">Get Started</h3>
-                <a href="create_class.php"><img class="img-fluid" src="assets/img/building.png"></a>
+                <a href="create_class.php"><img class="img-fluid zoom" src="assets/img/building.png"></a>
                 <p class="description">HeadCounter Attendance Tracking made Simple, Fast and Reliable.</p>
                 <a href="#" class="action">
                     <iclass
