@@ -15,7 +15,7 @@ function login()
     session_start();
 
     $username = $_POST['id'];
-    $password = hash('sha256', $_POST['password']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
     try {
         $myPDO = getPDO();
@@ -62,7 +62,7 @@ function create_account()
         $lecturer_id = $_POST['lecturer_id'];
         $name = $_POST['name'];
         $img_url = $_POST['img_url'];
-        $password_hash = hash('sha256', $_POST['password']);
+        $password_hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
         $myPDO = getPDO();
         $sql = 'INSERT INTO lecturer(lecturer_id, name, img_url, password_hash) VALUES(:lecturer_id, :name, :img_url, :password_hash)';
