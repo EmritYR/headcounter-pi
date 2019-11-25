@@ -1,8 +1,6 @@
-import os, sys
-
+import os
 while True:
-    print("Hello")
-    if os.path.isfile('stop_scanning'):
-        break
+        if os.path.isfile('stop_scanning'):
+            break
 
-os.system('sudo -u root -S rm stop_scanning')
+os.system('sudo -u root -S sudo rm stop_scanning')
