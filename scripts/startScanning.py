@@ -1,6 +1,7 @@
 import os, sys
 
 while true:
+    print("Hello")
     if os.path.isfile('/var/www/html/headcounter/scripts/stop_scanning'):
         break
 
