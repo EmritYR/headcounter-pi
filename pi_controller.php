@@ -11,10 +11,10 @@ function getPDO()
 }
 function main() {
     if (isset($_POST['start_scanning'])) {
-        system('python3 startScanning.py');
+        shell_exec('python3 startScanning.py');
     }
     if (isset($_POST['stop_scanning'])) {
-        system('touch stop_scanning');
+        shell_exec('touch stop_scanning');
     }
 }
 
