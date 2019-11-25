@@ -10,20 +10,12 @@ function getPDO()
     }
 }
 
-function startScanning(){
-
-}
-
-function stopScanning(){
-
-}
-
 function main() {
     if (isset($_POST['start_scanning'])) {
         system('python3 /var/www/html/headcounter/scripts/startScanning.py');
     }
     if (isset($_POST['stop_scanning'])) {
-        system('python3 /var/www/html/headcounter/scripts/stopScanning.py');
+        system('sudo -u root -S touch /var/www/html/headcounter/scripts/stop_scanning');
     }
 }
 
