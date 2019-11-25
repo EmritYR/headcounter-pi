@@ -2,7 +2,7 @@ import os, sys
 
 while true:
     print("Hello")
-    if os.path.isfile('/var/www/html/headcounter/scripts/stop_scanning'):
+    if os.path.isfile('stop_scanning'):
         break
 
-os.system('sudo -u root -S rm /var/www/html/headcounter/scripts/stop_scanning')
+os.system('sudo -u root -S rm stop_scanning')
