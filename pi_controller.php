@@ -9,13 +9,12 @@ function getPDO()
         return null;
     }
 }
-
 function main() {
     if (isset($_POST['start_scanning'])) {
-        system('python3 /var/www/html/headcounter/scripts/startScanning.py');
+        system('python3 startScanning.py');
     }
     if (isset($_POST['stop_scanning'])) {
-        system('sudo -u root -S touch /var/www/html/headcounter/scripts/stop_scanning');
+        system('touch stop_scanning');
     }
 }
 
