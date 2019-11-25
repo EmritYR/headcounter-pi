@@ -19,12 +19,12 @@ if (empty($_SESSION['username']))
 <div class="container">
     <div class="row d-flex justify-content-center mt-5">
         <form action="pi_controller.php" method="post">
-            <input class="btn btn-primary" type="button" value="Start Scanning" name="start_scanning" />
+            <input class="btn btn-primary" type="submit" value="Start Scanning" name="start_scanning" />
         </form>
     </div>
     <div class="row d-flex justify-content-center mt-5" >
         <form action="pi_controller.php" method="post">
-            <input class="btn btn-danger" type="button" value="Stop Scanning" name="stop_scanning" />
+            <input class="btn btn-danger" type="submit" value="Stop Scanning" name="stop_scanning" />
         </form>
     </div>
 </div>
