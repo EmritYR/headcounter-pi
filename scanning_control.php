@@ -24,7 +24,7 @@ if (empty($_SESSION['username']))
     </div>
     <div class="row d-flex justify-content-center mt-5" >
         <form action="pi_controller.php" method="post">
-            <input class="btn btn-danger" type="button" value="Start Scanning" name="stop_scanning" />
+            <input class="btn btn-danger" type="button" value="Stop Scanning" name="stop_scanning" />
         </form>
     </div>
 </div>
