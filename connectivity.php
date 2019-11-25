@@ -15,14 +15,14 @@ function login()
     session_start();
 
     $username = $_POST['id'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+//    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
     try {
         $myPDO = getPDO();
         $result = $myPDO->query("SELECT * FROM lecturer");
 
         while ($row = $result->fetch(\PDO::FETCH_ASSOC)) {
-            if ($row['lecturer_id'] == $username and $row['password_hash'] == $password) {
+            if ($row['lecturer_id'] == $username and password_verify($_POST['password'], $row['password_hash'])) {
                 echo "found user";
                 $_SESSION['username'] = $row['password_hash'];
                 $_SESSION['lecturer_id'] = $row['lecturer_id'];
