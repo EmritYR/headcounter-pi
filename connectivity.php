@@ -84,17 +84,48 @@ function create_account()
 
 function create_course()
 {
+    session_start();
+    try {
+        $course_id = $_SESSION['course_id'];
 
+        $myPDO = getPDO();
+        $sql = 'INSERT INTO course(course_id, name, description, img_url) VALUES(:course_id, :name,:description, :img_url)';
+        $stmt = $myPDO->prepare($sql);
+
+        $stmt->bindValue(':lecturer_id', $course_id);
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':password_hash', $description);
+        $stmt->bindValue(':img_url', $img_url);
+        $stmt->execute();
+
+        header("Location: success.php");
+    } catch (PDOException $e) {
+        echo "Failed: " . $e->getMessage();
+    }
 }
 
 function create_class()
 {
+    session_start();
 
+    try {
+
+
+    } catch (PDOException $e) {
+        echo "Failed: " . $e->getMessage();
+    }
 }
 
 function assign_lecturers()
 {
+    session_start();
 
+    try {
+
+
+    } catch (PDOException $e) {
+        echo "Failed: " . $e->getMessage();
+    }
 }
 
 function main()
