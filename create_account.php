@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION['username'])) {
     header("Location: login.php");
 }
-if ($_SESSION['name'] != 'admin'){
+if ($_SESSION['user'] != 'admin'){
     header('Location: 403.php');
 }
 ?>

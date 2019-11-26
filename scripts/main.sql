@@ -48,10 +48,11 @@ create table class
 
 create table attendance_log
 (
-    id             serial primary key,
     student_id     integer references student (student_id),
-    class_id       integer references class (id),
-    timestamp_date timestamp
+    class_id       integer references class (id) ,
+    timestamp_date timestamp,
+    primary key (student_id, class_id)
+
 );
 
 create table course_lecturers
@@ -82,8 +83,8 @@ from lecturer;
 select *
 from attendance_log;
 
-alter table course
-    alter column description drop not null;
-
-insert into lecturer(lecturer_id, name, password_hash)
-values (80085, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
+-- alter table course
+--     alter column description drop not null;
+--
+-- insert into lecturer(lecturer_id, name, password_hash)
+-- values (80085, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');

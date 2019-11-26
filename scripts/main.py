@@ -2,6 +2,7 @@ from rfid import *
 from lcd import *
 from connection import *
 import os
+import sys
 
 if __name__ == '__main__':
     while True:
