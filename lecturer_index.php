@@ -31,27 +31,6 @@ echo $_SESSION['user']
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <a href="create_student.php"><h4 class="card-title">Create Student</h4></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <a href="create_course.php"><h4 class="card-title">Create Course</h4></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-block">
-                    <a href="assign_lecturers.php"><h4 class="card-title">Assign Lecturers</h4></a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
