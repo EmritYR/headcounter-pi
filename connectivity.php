@@ -3,6 +3,7 @@ function getPDO()
 {
     try {
         $myPDO = new PDO('pgsql:host=ec2-54-221-195-148.compute-1.amazonaws.com; port=5432; dbname=d3bfq4clh09b21 sslmode=require', 'qqolorykjuhkzg', 'aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15');
+        $myPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $myPDO;
     } catch (PDOException $e) {
         echo "Failed: " . $e->getMessage();
@@ -80,15 +81,6 @@ function create_account()
     }
 }
 
-function getClassId(){
-    session_start();
-    $myPDO = getPDO();
-    $result = $myPDO->query("select * from class where id = ? order by id desc limit 1 ");
-    while ($row = $result->fetch(\PDO::FETCH_ASSOC)) {
-        $_SESSION['current_class'] = $row['id'];
-    }
-}
-
 function create_class()
 {
     session_start();
@@ -98,22 +90,22 @@ function create_class()
         $lecturer_id = $_POST['lecturer_id'];
         $location = $_POST['location'];
         $duration = $_POST['duration'];
-        $start_time = new DateTime();
+        $start_time = date('Y-m-d G:i:s');
 
         $myPDO = getPDO();
-        $sql = 'INSERT INTO class(type, course_id, lecturer_id, location, start_time, duration) VALUES(:type, :course_id, :lecturer_id, :location, :start_time, :duration)';
+        $sql = 'INSERT INTO class(type, course_id, lecturer_id, location, start_time, duration) VALUES(:typeLec, :course_id, :lecturer_id, :locationLec, :start_time, :duration)';
         $stmt = $myPDO->prepare($sql);
 
-        $stmt->bindValue(':type', $type);
+        $stmt->bindValue(':typeLec', $type);
         $stmt->bindValue(':course_id', $course_id);
         $stmt->bindValue(':lecturer_id', $lecturer_id);
-        $stmt->bindValue(':location', $location);
-        $stmt->bindValue(':start_time', $start_time->getTimestamp());
+        $stmt->bindValue(':locationLec', $location);
+        $stmt->bindValue(':start_time', $start_time);
         $stmt->bindValue(':duration', $duration);
         $stmt->execute();
 
-//        getClassId();
-    echo 'test';
+        $_SESSION['current_class'] = $myPDO->lastInsertId();
+
         header("Location: logging.php");
     } catch (PDOException $e) {
         echo "Failed: " . $e->getMessage();
