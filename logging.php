@@ -2,6 +2,7 @@
 session_start();
 if (empty($_SESSION['username']))
     header('Location: login.php');
+echo $_SESSION['current_class'];
 ?>
 
 <!doctype html>

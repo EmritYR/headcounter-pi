@@ -46,6 +46,9 @@ if (empty($_SESSION['username'])) {
             <input class="form-control" type="text" name="location" placeholder="Location">
         </div>
         <div class="form-group">
+            <input class="form-control" type="text" name="duration" placeholder="Duration (HH:MM)">
+        </div>
+        <div class="form-group">
             <input class="btn btn-primary" type="submit" name="create_class" value="Create Class"/>
         </div>
     </form>

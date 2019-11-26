@@ -35,7 +35,7 @@ if (empty($_SESSION['username'])) {
             <input class="form-control" type="text" name="name" placeholder="Course Name" required>
         </div>
         <div class="form-group">
-            <textarea class="form-control" type="text" name="description" placeholder="Course Description...">
+            <textarea class="form-control" type="text" name="description" placeholder="Course Description..."></textarea>
         </div>
         <div class="form-group">
             <input class="form-control" type="text" name="img_url" placeholder="Img URL (Optional)">

@@ -1,6 +1,4 @@
 import datetime
-
-from psycopg2 import sql
 from connection import *
 
 connection, cursor = databaseConnect("qqolorykjuhkzg",
@@ -10,28 +8,28 @@ connection, cursor = databaseConnect("qqolorykjuhkzg",
 try:
     # insertStudent(connection, cursor, 816010709, "Bhavesh Digamber")
     # insertStudent(connection, cursor, 815117456, "Emrit Ramharracksingh")
-    students = getTableList(connection, cursor, 'student')
-    print(students)
+    # students = getTableList(connection, cursor, 'student')
+    # print(students)
 
     # insertCourse(connection, cursor, 'COMP3613', 'Software Eng 2', None, None)
-    courses = getTableList(connection, cursor, 'course')
-    print(courses)
+    # courses = getTableList(connection, cursor, 'course')
+    # print(courses)
 
     # insertRegistrationList(connection, cursor, 'COMP3613', 815117456)
-    registrationList = getTableList(connection, cursor, 'registration_list')
-    print(registrationList)
+    # registrationList = getTableList(connection, cursor, 'registration_list')
+    # print(registrationList)
 
     # insertLecturer(connection, cursor, 815117456, 'Emrit Ramharracksigh', None)
-    lecturerList = getTableList(connection, cursor, 'lecturer')
-    print(lecturerList)
+    # lecturerList = getTableList(connection, cursor, 'lecturer')
+    # print(lecturerList)
 
     # Runs on startScanning
     # Stores class_id in var reuses for attendance log
-    # insertClass(connection, cursor, 'Lecture', 'COMP3613', '815117456', 'FST CSL1', datetime.datetime.now(), '02:00')
-    classList = getTableList(connection, cursor, 'class')
-    print(classList)
+    # insertClass(connection, cursor, 'Lecture', 'COMP2600', '816010709', 'FST CSL2', datetime.datetime.now(), '01:00')
+    # classList = getTableList(connection, cursor, 'class')
+    # print(classList)
 
-    insertAttendanceLog(connection, cursor, 815117456, '1', datetime.datetime.now())
+    insertAttendanceLog(connection, cursor, 845715689, '4', datetime.datetime.now())
     attendanceList = getTableList(connection, cursor, 'attendance_log')
     print(attendanceList)
 
