@@ -137,6 +137,27 @@ function create_course()
     }
 }
 
+function create_student()
+{
+    session_start();
+    try {
+        $student_id = $_POST['student_id'];
+        $name = $_POST['name'];
+
+        $myPDO = getPDO();
+        $sql = 'INSERT INTO student(student_id, name) VALUES(:student_id, :name)';
+        $stmt = $myPDO->prepare($sql);
+
+        $stmt->bindValue(':student_id', $student_id);
+        $stmt->bindValue(':name', $name);
+        $stmt->execute();
+
+        header("Location: success.php");
+    } catch (PDOException $e) {
+        echo "Failed: " . $e->getMessage();
+    }
+}
+
 function assign_lecturers()
 {
     session_start();
@@ -177,6 +198,9 @@ function main()
     }
     if (isset($_POST['create_class'])) {
         create_class();
+    }
+    if (isset($_POST['create_student'])) {
+        create_student();
     }
     if (isset($_POST['assign_lecturer'])) {
         assign_lecturers();

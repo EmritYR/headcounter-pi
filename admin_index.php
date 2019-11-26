@@ -14,10 +14,11 @@ echo $_SESSION['user']
 </head>
 <body>
 <ul>
-    <a href="create_class.php">Create Class</a>
-    <a href="create_course.php">Create Course</a>
-    <a href="assign_lecturers.php">Assign Lecturers</a>
-    <a href="create_class.php">Create Class</a>
+    <li><a href="create_account.php">Create Lecturer</a></li>
+    <li><a href="create_student.php">Create Student</a></li>
+    <li><a href="create_course.php">Create Course</a></li>
+    <li><a href="assign_lecturers.php">Assign Lecturers</a></li>
+    <li><a href="create_class.php">Create Class</a></li>
 </ul>
 
 </body>
