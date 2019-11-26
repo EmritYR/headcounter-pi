@@ -3,12 +3,12 @@ import RPi.GPIO as GPIO
 import os
 import sys
 import datetime
+import time
+from threading import Thread
 
 from rfid import *
 from lcd import *
 from connection import *
-
-from threading import Thread
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -16,21 +16,27 @@ GPIO.setmode(GPIO.BOARD)
 class ThreadTest():
 
     def scanCard(self):
-        while True:
-            id, text = readData()
-            insertAttendanceLog(connection, cursor, text, int(sys.argv[1]), datetime.datetime.now())
+        try:
+            while True:
+                id, text = readData()
+                insertAttendanceLog(connection, cursor, text, int(sys.argv[1]), datetime.datetime.now())
+                time.sleep(1)
+        except KeyboardInterrupt:
+            GPIO.cleanup()
 
     def checkFile(self):
-        while True:
-            if os.path.isfile('/var/www/html/headcounter/scripts/stop_scanning'):
-                shutdown()
+        try:
+            while True:
+                if os.path.isfile('/var/www/html/headcounter/scripts/stop_scanning'):
+                    shutdown()
+        except KeyboardInterrupt:
+            GPIO.cleanup()
 
 
 def shutdown():
     shutdownConnection(connection, cursor)
-    GPIO.cleanup()
     os.system('sudo -u root -S rm /var/www/html/headcounter/scripts/stop_scanning')
-    exit()
+    GPIO.cleanup()
 
 
 if __name__ == '__main__':
@@ -45,5 +51,7 @@ if __name__ == '__main__':
         T2.start()
         T1.join()
         T2.join()
+    except KeyboardInterrupt:
+        pass
     finally:
         GPIO.cleanup()
