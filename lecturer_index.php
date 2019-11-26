@@ -4,7 +4,7 @@ if (empty($_SESSION['username'])) {
     header('Location: login.php');
 }
 
-if ($_SESSION['user'] != 'admin') {
+if ($_SESSION['user'] == 'admin') {
     header('Location: 403.php');
 }
 echo $_SESSION['user']
@@ -19,7 +19,7 @@ echo $_SESSION['user']
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <title>Admin</title>
+    <title>Lecturer</title>
 </head>
 <body>
 <div class="container">
@@ -27,7 +27,7 @@ echo $_SESSION['user']
         <div class="col-sm-3">
             <div class="card">
                 <div class="card-block">
-                    <a href="create_account.php"><h4 class="card-title">Create Lecturer</h4></a>
+                    <a href="create_class.php"><h4 class="card-title">Create Class</h4></a>
                 </div>
             </div>
         </div>

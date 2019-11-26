@@ -51,7 +51,7 @@ session_start();
                         echo '<a class="btn btn-light action-button" role="button" href="login.php">Login</a>';
                     }
                     if (!empty($_SESSION['username'])) {
-                        echo '<a class="btn btn-light action-button" role="button" href="account.php">Account</a>';
+                        echo '<a class="btn btn-light action-button" role="button" href="account.php">' . $_SESSION['user'] .'</a>';
                     }
                     ?>
                 </div>

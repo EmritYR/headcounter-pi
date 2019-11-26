@@ -2,6 +2,9 @@
 session_start();
 if (empty($_SESSION['username']))
     header('Location: login.php');
+if ($_SESSION['user'] == 'admin') {
+    header('Location: 403.php');
+}
 echo $_SESSION['current_class'];
 ?>
 
@@ -20,12 +23,12 @@ echo $_SESSION['current_class'];
 <div class="container">
     <div class="row d-flex justify-content-center mt-5">
         <form action="pi_controller.php" method="post">
-            <input class="btn btn-primary" type="submit" value="Start Scanning" name="start_scanning" />
+            <input class="btn btn-primary" type="submit" value="Start Scanning" name="start_scanning"/>
         </form>
     </div>
-    <div class="row d-flex justify-content-center mt-5" >
+    <div class="row d-flex justify-content-center mt-5">
         <form action="pi_controller.php" method="post">
-            <input class="btn btn-danger" type="submit" value="Stop Scanning" name="stop_scanning" />
+            <input class="btn btn-danger" type="submit" value="Stop Scanning" name="stop_scanning"/>
         </form>
     </div>
 </div>

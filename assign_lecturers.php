@@ -4,7 +4,7 @@ if (empty($_SESSION['username'])) {
     header("Location: login.php");
 }
 if ($_SESSION['user'] != 'admin') {
-    header('Location: index.php');
+    header('Location: 403.php');
 }
 ?>
 
