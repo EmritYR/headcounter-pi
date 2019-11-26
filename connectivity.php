@@ -39,7 +39,7 @@ function login()
             if ($_SESSION['user'] == 'admin')
                 header("Location: admin_index.php");
             else
-                header("Location: index.php");
+                header("Location: lecturer_index.php");
         }
     } catch (PDOException $e) {
         echo "Failed: " . $e->getMessage();

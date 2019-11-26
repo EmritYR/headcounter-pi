@@ -9,8 +9,8 @@ from threading import Thread
 from rfid import *
 from lcd import *
 from connection import *
+from led import *
 
-GPIO.setmode(GPIO.BOARD)
 
 
 class ThreadTest():
@@ -19,8 +19,9 @@ class ThreadTest():
         try:
             while True:
                 id, text = readData()
+                turnOnLED(GPIO)
                 insertAttendanceLog(connection, cursor, text, int(sys.argv[1]), datetime.datetime.now())
-                time.sleep(1)
+                turnOffLED(GPIO)
         except KeyboardInterrupt:
             GPIO.cleanup()
 
@@ -40,6 +41,8 @@ def shutdown():
 
 
 if __name__ == '__main__':
+    GPIO.setmode(GPIO.BOARD)
+    initLED(GPIO)
     try:
         connection, cursor = databaseConnect("qqolorykjuhkzg",
                                              "aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15",

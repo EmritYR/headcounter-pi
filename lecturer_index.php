@@ -7,7 +7,6 @@ if (empty($_SESSION['username'])) {
 if ($_SESSION['user'] == 'admin') {
     header('Location: 403.php');
 }
-echo $_SESSION['user']
 ?>
 
 <!doctype html>
@@ -23,6 +22,9 @@ echo $_SESSION['user']
 </head>
 <body>
 <div class="container">
+    <div class="row text-center">
+        <h1>Lecturer Navigation</h1>
+    </div>
     <div class="row text-center">
         <div class="col-sm-3">
             <div class="card">
