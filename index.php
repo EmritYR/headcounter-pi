@@ -42,10 +42,19 @@ session_start();
                      id="navcol-1">
                     <ul class="nav navbar-nav">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#">About Us</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="contact_us.php#">Contact Us</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="contact_us.php#">Contact
+                                Us</a></li>
                     </ul>
                     <div class="mr-auto"></div>
-                    <a class="btn btn-light action-button" role="button" href="login.php">Login</a></div>
+                    <?php
+                    if (empty($_SESSION['username'])) {
+                        echo '<a class="btn btn-light action-button" role="button" href="login.php">Login</a>';
+                    }
+                    if (!empty($_SESSION['username'])) {
+                        echo '<a class="btn btn-light action-button" role="button" href="account.php">Account</a>';
+                    }
+                    ?>
+                </div>
             </div>
         </nav>
 

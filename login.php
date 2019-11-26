@@ -19,7 +19,7 @@ if (!empty($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/Article-List.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
-    <link rel="stylesheet" href="assets/css/styles.css">>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>

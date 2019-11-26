@@ -3,6 +3,9 @@ session_start();
 if (empty($_SESSION['username'])) {
     header("Location: login.php");
 }
+if ($_SESSION['user'] != 'admin') {
+    header('Location: index.php');
+}
 ?>
 
 <!doctype html>

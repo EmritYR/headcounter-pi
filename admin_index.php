@@ -1,5 +1,12 @@
 <?php
 session_start();
+if(empty($_SESSION['username'])){
+    header('Location: login.php');
+}
+
+if($_SESSION['user']!='admin'){
+    header('Location: index.php');
+}
 echo $_SESSION['user']
 ?>
 
@@ -18,7 +25,6 @@ echo $_SESSION['user']
     <li><a href="create_student.php">Create Student</a></li>
     <li><a href="create_course.php">Create Course</a></li>
     <li><a href="assign_lecturers.php">Assign Lecturers</a></li>
-    <li><a href="create_class.php">Create Class</a></li>
 </ul>
 
 </body>
