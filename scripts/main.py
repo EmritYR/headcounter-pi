@@ -29,4 +29,5 @@ if __name__ == '__main__':
             GPIO.output(3, GPIO.HIGH)
             time.sleep(1)
     finally:
+        os.system('sudo -u root -S rm /var/www/html/headcounter/scripts/stop_scanning')
         GPIO.cleanup()
