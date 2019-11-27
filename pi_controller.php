@@ -2,7 +2,8 @@
 function main()
 {
     if (isset($_POST['start_scanning'])) {
-        $cmd = 'sudo -u root -S python3 scripts/main.py ' . $_SESSION['current_class'] . ' 2>&1';
+        $class_id = $_SESSION['current_class'];
+        $cmd = "sudo -u root -S python3 scripts/main.py .$class_id. & 2>&1";
         exec($cmd);
         header('Location: logging.php');
     }

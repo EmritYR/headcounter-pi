@@ -5,56 +5,30 @@ import sys
 import datetime
 import time
 from threading import Thread
-
-from rfid import *
-from lcd import *
+from mfrc522 import SimpleMFRC522
 from connection import *
-from led import *
-
-
-
-class ThreadTest():
-
-    def scanCard(self):
-        try:
-            while True:
-                id, text = readData()
-                turnOnLED(GPIO)
-                insertAttendanceLog(connection, cursor, text, int(sys.argv[1]), datetime.datetime.now())
-                turnOffLED(GPIO)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
-
-    def checkFile(self):
-        try:
-            while True:
-                if os.path.isfile('/var/www/html/headcounter/scripts/stop_scanning'):
-                    shutdown()
-        except KeyboardInterrupt:
-            GPIO.cleanup()
-
-
-def shutdown():
-    shutdownConnection(connection, cursor)
-    os.system('sudo -u root -S rm /var/www/html/headcounter/scripts/stop_scanning')
-    GPIO.cleanup()
 
 
 if __name__ == '__main__':
+    logs = open('logs.txt', 'w')
     GPIO.setmode(GPIO.BOARD)
-    initLED(GPIO)
-    try:
-        connection, cursor = databaseConnect("qqolorykjuhkzg",
-                                             "aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15",
-                                             "ec2-54-221-195-148.compute-1.amazonaws.com", "5432", "d3bfq4clh09b21")
+    reader = SimpleMFRC522()
 
-        T1 = Thread(target=ThreadTest().scanCard(), args=())
-        T2 = Thread(target=ThreadTest().checkFile(), args=())
-        T1.start()
-        T2.start()
-        T1.join()
-        T2.join()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        GPIO.cleanup()
+    GPIO.setup(3, GPIO.OUT)
+    GPIO.output(3, GPIO.LOW)
+
+    connection, cursor = databaseConnect("qqolorykjuhkzg",
+                                                 "aaf3efea7997f8b655d1b34dcffd6c3c5664eafdc4fb58591adef8df6b780a15",
+                                                 "ec2-54-221-195-148.compute-1.amazonaws.com", "5432", "d3bfq4clh09b21")
+
+    while not os.path.isfile('/var/www/html/headcounter/scripts/stop_scanning'):
+        try:
+            GPIO.output(3, GPIO.LOW)
+            print('Reading: ')
+            id, text = reader.read()
+            logs.write('Read: ' + str(text))
+            insertAttendanceLog(connection, cursor, text, sys.argv[1], datetime.datetime.now())
+            GPIO.output(3, GPIO.HIGH)
+            time.sleep(3)
+        finally:
+            GPIO.cleanup()
